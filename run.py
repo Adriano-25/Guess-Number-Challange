@@ -34,3 +34,17 @@ attempts = 0
 while attempts < max_attempts:
     # Ask the player for a guess
     guess = int(input("Take a guess: "))
+
+    if guess == secret_number:
+        print(f"Congratulations, {player_name}! You guessed{secret_number}!")
+        break
+    elif guess < secret_number:
+        print("To low! Try a higher number.")
+    else:
+        print("To high! Try a lower number.")
+
+        attempts += 1
+
+if attempts == max_attempts:
+    print(f"Sorry, {player_name}. You reach the maximum number of attempts.")
+    print(f"The secret number was {secret_number}. Better luck next time!")
