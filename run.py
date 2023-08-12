@@ -1,11 +1,19 @@
 import random
+import gspread
+from google.oauth2.service_account import Credentials
+
+SCOPE = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/drive"
+    ]
 
 # Welcome message
 print("Welcome to the Guess Number Challenge!")
 print("Can you guess the secret number?")
 
 # Ask for the player's name
-player_name = input("What's your name? ")
+player_name = input("What's your name?\n ")
 print(f"Welcome, {player_name}!")
 
 # Set the maximum number of attempts
@@ -23,7 +31,7 @@ while True:  # Keep the game running until the player decides to stop
     while attempts < max_attempts:
         try:
             # Ask the player for a guess
-            guess = int(input("Take a guess: "))
+            guess = int(input("Take a guess:\n "))
 
             # Calculate the difference between the guess and the secret number
             difference = abs(guess - secret_number)
